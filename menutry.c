@@ -1,6 +1,7 @@
 /*
 name: Rakshitha M
 date: 28/10/2026
+description : Menu card
 */
 #include <stdio.h>
 int main()
