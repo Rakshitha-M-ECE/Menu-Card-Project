@@ -75,31 +75,26 @@ int main()
         if (r == 1 && c1 > 0) 
         { 
           c1--; 
-          total -= 249; 
           printf("Veg Momos removed\n"); 
         }
         else if (r == 2 && c2 > 0) 
         { 
             c2--; 
-            total -= 180; 
             printf("Hakka Noodles removed\n"); 
         }
        else if (r == 3 && c3 > 0) 
        { 
            c3--; 
-           total -= 249; 
            printf("White sauce pasta removed\n"); 
        }
        else if (r == 4 && c4 > 0) 
        { 
         c4--; 
-        total -= 180; 
         printf("French fries removed\n"); 
        }
        else if (r == 5 && c5 > 0) 
        { 
         c5--; 
-        total -= 350; 
         printf("Fried chicken removed\n"); 
        }
        else 
@@ -114,7 +109,8 @@ int main()
 
         }
         else
-       {
+       {  
+          int j=1;
           printf("\n------------ YOUR CART ------------\n");
           if (c1) 
             printf("%d. Veg Momos           249 x %d\n",j++, c1);
