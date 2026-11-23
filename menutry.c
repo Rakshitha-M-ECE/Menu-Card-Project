@@ -7,7 +7,7 @@ description : Menu card
 #include <stdio.h>
 int main()
 {   
-    int option, i=1,j=1, payment,quantity;
+    int option, i=1, payment,quantity;
     int c1=0, c2=0, c3=0, c4=0, c5=0;
     float total=0, gst, final_total;
 
@@ -71,7 +71,12 @@ int main()
         {
         int r;
         printf("Enter item number to remove: ");
-        scanf("%d", &r);
+        if( scanf("%d", &r)!=1)
+         {   
+           while (getchar() != '\n');   // clear bad input
+           printf("Invalid number\n");
+           continue;
+         }  
         if (r == 1 && c1 > 0) 
         { 
           c1--; 
@@ -82,27 +87,27 @@ int main()
             c2--; 
             printf("Hakka Noodles removed\n"); 
         }
-       else if (r == 3 && c3 > 0) 
-       { 
+        else if (r == 3 && c3 > 0) 
+        { 
            c3--; 
            printf("White sauce pasta removed\n"); 
-       }
-       else if (r == 4 && c4 > 0) 
-       { 
-        c4--; 
-        printf("French fries removed\n"); 
-       }
-       else if (r == 5 && c5 > 0) 
-       { 
+        }
+        else if (r == 4 && c4 > 0) 
+        { 
+         c4--; 
+         printf("French fries removed\n"); 
+        }
+        else if (r == 5 && c5 > 0) 
+        { 
         c5--; 
         printf("Fried chicken removed\n"); 
-       }
-       else 
+        }
+        else 
          printf("That item is not in your cart\n");
-       break;     
-      }
+        break;     
+       }
 
-      case 7:
+        case 7:  //to check card before billing 
       if (c1 + c2 + c3 + c4 + c5 == 0)
         {
           printf("\nYour cart is empty.\n");
@@ -137,7 +142,15 @@ int main()
     
     } while(option!=0);
     
+    //ToTAL CALCULATION
     total=c1*249+c2*180+c3*249+c4*180+c5*350;
+    
+
+    if(total == 0)
+   {
+    printf("Your cart is empty. Thank you!\n");
+  }
+
     // GST BILL CALCULATION
      gst = total * 5.0 / 100; //calculating GST of 5%
      final_total = total + gst; //final bill
